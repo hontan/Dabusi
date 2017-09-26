@@ -1,3 +1,4 @@
+library(forecast)
 plot(wineind)
 sm <- ma(wineind,order=12)
 lines(sm,col="red")
@@ -21,7 +22,9 @@ install.packages("xlsx")
 # C:\Users\Hon\Documents\R\Kaggle Titanic Data
 
 # Alternatively, using code, set working directory using:
-setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data")
+# setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acter Travelmate
+setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # Work HP computer
+# Gigabyte
 
 # Load row data
 train <- read.csv("train.csv", header = TRUE)
@@ -148,7 +151,7 @@ ggplot(data.combined[1:891,], aes(x = title, fill = Survived)) +
   xlab("Title") +
   ylab("Total Count") +
   labs(fill = "Survived")
-  
+
 # David Langer's github
 # https://github.com/EasyD/IntroToDataScience
 
