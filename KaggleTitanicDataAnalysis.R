@@ -240,5 +240,6 @@ subset(data.combined[which(data.combined$Name == "Timothy"),])
 grep("Allen", data.combined$Name, value = TRUE)
 NamedAllen <- data.combined[which(data.combined$Name == grep("Allen", data.combined$Name, value = TRUE)),]
 
+# Select * Into [NamedAllen] From [data.combined] Where Name Like '%Allen%'
 NamedAllen <- data.combined[grep("Allen", data.combined$Name), ]
 
