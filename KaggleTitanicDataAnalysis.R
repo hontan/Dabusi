@@ -23,7 +23,7 @@ install.packages("xlsx")
 
 
 # Alternatively, using code, set working directory using:
-# setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acter Travelmate
+# setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
 # setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # Work HP computer
 setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
 
