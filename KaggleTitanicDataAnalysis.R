@@ -23,9 +23,9 @@ install.packages("xlsx")
 
 
 # Alternatively, using code, set working directory using:
-# setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
+setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
 # setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # Work HP computer
-setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
+# setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
 
 
 # Load row data
@@ -244,3 +244,4 @@ NamedAllen <- data.combined[which(data.combined$Name == grep("Allen", data.combi
 
 # Select * Into [NamedAllen] From [data.combined] Where Name Like '%Allen%'
 NamedAllen <- data.combined[grep("Allen", data.combined$Name), ]
+SpecificNamedAllen <- data.combined[which(data.combined$Name == 'Allen, Miss. Elisabeth Walton'), ]
