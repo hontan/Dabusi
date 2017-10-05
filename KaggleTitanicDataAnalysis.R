@@ -258,5 +258,5 @@ length(unique(data.combined$SibSp))
 data.combined$SibSp <- as.factor(data.combined$SibSp)
 
 # Check
-## Video 3, paused at 41:20.
+## Video 2, paused at 41:20.
 
