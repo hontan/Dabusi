@@ -232,7 +232,7 @@ length(which(misses.alone$Age <= 14.5))
 
 # Moving on to the sibsp variable, summarize the variable
 summary(data.combined$SibSp)
-# Pause Video at time 37:40
+
 
 #####################################################
 
@@ -245,3 +245,18 @@ NamedAllen <- data.combined[which(data.combined$Name == grep("Allen", data.combi
 # Select * Into [NamedAllen] From [data.combined] Where Name Like '%Allen%'
 NamedAllen <- data.combined[grep("Allen", data.combined$Name), ]
 SpecificNamedAllen <- data.combined[which(data.combined$Name == 'Allen, Miss. Elisabeth Walton'), ]
+
+#####################################################
+
+
+# Can we treat sibsp as a factor (i.e. a dropdown list)
+# Does it have a small enough range of defined values.
+# length is linke count here
+length(unique(data.combined$SibSp))
+
+# Do transformation of sibsp from integer variable to factor variable.
+data.combined$SibSp <- as.factor(data.combined$SibSp)
+
+# Check
+## Video 3, paused at 41:20.
+
