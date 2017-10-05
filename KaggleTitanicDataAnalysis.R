@@ -257,7 +257,19 @@ length(unique(data.combined$SibSp))
 # Do transformation of sibsp from integer variable to factor variable.
 data.combined$SibSp <- as.factor(data.combined$SibSp)
 
-# Check
-## Video 2, paused at 41:20.
+# Check if SibSp has become factor data type.
+str(data.combined)
 
+# SibSp as a factor allows us to do more with it in a ggplot bar graph.
+# We believe title is predictive. Visualize survival rates by SipSp, Pclass, and [something else]
+ggplot(data.combined[1:891,], aes(x = SibSp, fill = Survived)) +
+  geom_bar(width = 1) +
+  facet_wrap(~Pclass + title) +
+  ggtitle("Pclass, Title") +
+  xlab("SibSp") +
+  ylab("Total Count") +
+  ylim(0,300) +
+  labs(fill = "Survived")
+
+## Video 3, paused at 41:25.
 
