@@ -271,5 +271,5 @@ ggplot(data.combined[1:891,], aes(x = SibSp, fill = Survived)) +
   ylim(0,300) +
   labs(fill = "Survived")
 
-## Video 3, paused at 41:25.
+## Video 2, paused at 41:25.
 
