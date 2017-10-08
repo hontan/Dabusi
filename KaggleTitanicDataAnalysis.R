@@ -257,7 +257,7 @@ length(unique(data.combined$SibSp))
 # Do transformation of sibsp from integer variable to factor variable.
 data.combined$SibSp <- as.factor(data.combined$SibSp)
 
-# Check if SibSp has become factor data type.
+# Check
 str(data.combined)
 
 # SibSp as a factor allows us to do more with it in a ggplot bar graph.
@@ -271,5 +271,32 @@ ggplot(data.combined[1:891,], aes(x = SibSp, fill = Survived)) +
   ylim(0,300) +
   labs(fill = "Survived")
 
-## Video 2, paused at 41:25.
+# Treat the parch variable as a factor and visualize.
+data.combined$Parch <- as.factor(data.combined$Parch)
+str(data.combined) # check
+ggplot(data.combined[1:891,], aes(x = Parch, fill = Survived)) +
+  geom_bar(width = 1) +
+  facet_wrap(~Pclass + title) +
+  ggtitle("Pclass, Title") +
+  xlab("Parch") +
+  ylab("Total Count") +
+  ylim(0,300) +
+  labs(fill = "Survived")
+
+## Let's try some feature engineering. what about creating a family size feature?
+temp.sibsp <- c(train$SibSp, test$SibSp) #grabbing these again, becuase I want their integer variable.
+temp.parch <- c(train$Parch, test$Parch) #grabbing these again, becuase I want their integer variable.
+data.combined$fammily.size <- as.factor(temp.sibsp + temp.parch + 1)
+
+# Visualize it to see if it is predictive
+ggplot(data.combined[1:891,], aes(x = fammily.size, fill = Survived)) +
+  geom_bar(width = 1) +
+  facet_wrap(~Pclass + title) +
+  ggtitle("Pclass, Title") +
+  xlab("family.size") +
+  ylab("Total Count") +
+  ylim(0,300) +
+  labs(fill = "Survived")
+
+## Completed Video 2.
 
