@@ -26,6 +26,7 @@ install.packages("xlsx")
 setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
 # setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # Work HP computer
 # setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
+# setwd("/home/hon/R/Kaggle Titanic Data") # GB OpenSuse VM
 
 
 # Load row data
