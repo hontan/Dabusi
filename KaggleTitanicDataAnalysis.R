@@ -11,6 +11,10 @@ install.packages("xlsx")
 
 # Kaggle Titanic Data Analysis...
 
+# This is a classification problem. Skill applicable to things like: Fraud Detection, Customer Segmentation.
+
+# "Data Analysis" and "Feature Engineering".
+
 # Data From:
 # https://www.kaggle.com/c/titanic/data
 # train.csv and test.csv
@@ -24,9 +28,8 @@ install.packages("xlsx")
 
 # Alternatively, using code, set working directory using:
 setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
-# setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # Work HP computer
+# setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # PT HP
 # setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
-# setwd("/home/hon/R/Kaggle Titanic Data") # GB OpenSuse VM
 
 
 # Load row data
@@ -299,5 +302,20 @@ ggplot(data.combined[1:891,], aes(x = fammily.size, fill = Survived)) +
   ylim(0,300) +
   labs(fill = "Survived")
 
-## Completed Video 2.
+
+# Take a look at the ticket variable
+str(data.combined$Ticket)
+
+# Based on the huge number of levels, Ticket really isn't a factor (dropdown list) variable, it's a string.
+# So, convert it, and display first 20
+data.combined$Ticket <- as.character(data.combined$Ticket)
+str(data.combined$Ticket)
+data.combined$Ticket[1:20]
+
+# There is no immediately apparent structure in the data, let's see if we can find some.
+# We'll start with taking a look at just the first char for each.
+Ticket.first.char <- ifelse(data.combined$Ticket == "", " ", substr(data.combined$Ticket, 1, 1))
+unique(Ticket.first.char)
+
+## Paused here: Video 3, 11:20.
 
