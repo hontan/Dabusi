@@ -317,5 +317,41 @@ data.combined$Ticket[1:20]
 Ticket.first.char <- ifelse(data.combined$Ticket == "", " ", substr(data.combined$Ticket, 1, 1))
 unique(Ticket.first.char)
 
-## Paused here: Video 3, 11:20.
+# We can make a factor for analysis purposes and visualize
+data.combined$Ticket.first.char <- as.factor(Ticket.first.char)
+
+# View it
+View(data.combined)
+
+ggplot(data.combined[1:891,], aes(x = Ticket.first.char, fill = Survived)) +
+  geom_bar() +
+  ggtitle("Survivability by ticket.first.char") +
+  xlab("ticket.first.char") +
+  ylab("Total Count") +
+  ylim(fill = "Survived")
+
+# Ticket seems like it might be predictive, drill down a bit
+ggplot(data.combined[1:891,], aes(x = Ticket.first.char, fill = Survived)) +
+  geom_bar() +
+  facet_wrap("Pclass") +
+  ggtitle("Pclass") +
+  xlab("ticket.first.char") +
+  ylab("Total Count") +
+  ylim(0,150) +
+  labs(fill = "Survived")
+
+# Lastly, see if we get a pattern when using combination of Pclass and Title
+ggplot(data.combined[1:891,], aes(x = Ticket.first.char, fill = Survived)) +
+  geom_bar() +
+  facet_wrap(~Pclass + title) +
+  ggtitle("Pclass, title") +
+  xlab("Ticket.first.char") +
+  ylab("Total Count") +
+  ylim(0,200) +
+  labs(fill = "Survived")
+
+# Occam's razor is a principle from philosophy. Suppose there exist two explanations for an occurrence. In this case the simpler one is usually better.
+# Logistic regression as a classification algorithm is preferred over deep neural network.
+
+## Paused here: Video 3, 21:12.
 
