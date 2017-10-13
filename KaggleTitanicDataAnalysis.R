@@ -353,5 +353,19 @@ ggplot(data.combined[1:891,], aes(x = Ticket.first.char, fill = Survived)) +
 # Occam's razor is a principle from philosophy. Suppose there exist two explanations for an occurrence. In this case the simpler one is usually better.
 # Logistic regression as a classification algorithm is preferred over deep neural network.
 
-## Paused here: Video 3, 21:12.
+# Next, the fares Titanic passengers paid
+summary(data.combined$Fare)
+length(unique(data.combined$Fare))
+str(data.combined$Fare)
+
+# Can't make fare a factor, too many variations, treat as numeric & visualize with histogram
+ggplot(data.combined, aes(x = Fare)) +
+  geom_bar(width = 5) +
+  ggtitle("Combined Fair Distribution") +
+  xlab("Fare") +
+  ylab("Total Count") +
+  ylim(0,200)
+
+
+## Paused here: Video 3, 25:29.
 
