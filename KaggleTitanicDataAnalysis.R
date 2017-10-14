@@ -365,7 +365,37 @@ ggplot(data.combined, aes(x = Fare)) +
   xlab("Fare") +
   ylab("Total Count") +
   ylim(0,200)
+# Error message means, tossed out one value because there was one NA. See from the summary: summary(data.combined$Fare)
+
+# Let's check to see if far has predictive power...
+# ideo 3, 25:35.
+ggplot(data.combined[1:891,], aes(x = Fare, fill = Survived)) +
+  geom_bar(width = 5) +
+  facet_wrap(~Pclass + title) +
+  ggtitle("Pclass, Title") +
+  xlab("Fare") +
+  ylab("Total Count") +
+  ylim(0,50) +
+  labs(fill = "Survived")
 
 
-## Paused here: Video 3, 25:29.
+# Analysis of the cabin variable
+str(data.combined$Cabin)
+## 187 levels, so probably not good as a factor.
+
+# Cabin rally isn't a factor, make a string and display first 100.
+data.combined$Cabin <- as.character(data.combined$Cabin)
+data.combined$Cabin[1:100]
+
+# Replace empty cabins with a "U" for "Unknown".
+data.combined[which(data.combined$Cabin == ""), "Cabin"] <- "U"
+data.combined$Cabin[1:100]
+
+# Take a look at just the fist char of a factor
+# If there is any signal in this variable, it's going to most likely be denoted in the decks, the first character.
+Cabin.first.char <- as.factor(substr(data.combined$Cabin, 1, 1))
+str(Cabin.first.char)
+levels(Cabin.first.char)
+
+## Paused here: Video 3, 39:30.
 
