@@ -361,7 +361,7 @@ str(data.combined$Fare)
 # Can't make fare a factor, too many variations, treat as numeric & visualize with histogram
 ggplot(data.combined, aes(x = Fare)) +
   geom_bar(width = 5) +
-  ggtitle("Combined Fair Distribution") +
+  ggtitle("Combined Fare Distribution") +
   xlab("Fare") +
   ylab("Total Count") +
   ylim(0,200)
