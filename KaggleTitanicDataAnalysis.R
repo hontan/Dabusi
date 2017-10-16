@@ -27,8 +27,8 @@ install.packages("xlsx")
 
 
 # Alternatively, using code, set working directory using:
-setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
-# setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # PT HP
+# setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
+setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # PT HP
 # setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
 
 
@@ -398,20 +398,39 @@ str(Cabin.first.char)
 levels(Cabin.first.char)
 
 # Add to combined data set and plot
-data.combined.first.char <- Cabin.first.char
+data.combined$Cabin.first.char <- Cabin.first.char
 # See what this looks like, a variable, not in the data.combined dataset.
-View(data.combined.first.char)
+View(data.combined$Cabin.first.char)
 
 # Hight level plot
-ggplot(data.combined[1:891,] aes(x = Cabin.first.char, fill = Survived)) +
+ggplot(data.combined[1:891,], aes(x = Cabin.first.char, fill = Survived)) +
   geom_bar() +
   ggtitle("Survivability by cabin.first.char") +
-  xlab("cabin.first.char") +
+  xlab("Cabin.first.char") +
   ylab("Total Count") +
   ylim(0,750) +
   labs(fill = "Survived")
-# THIS ISN'T WORKING
+
+# Cound hace some predictive power, drill in...
+ggplot(data.combined[1:891,], aes(x = Cabin.first.char, fill = Survived)) +
+  geom_bar() +
+  facet_wrap(~Pclass) +
+  ggtitle("Survivability by Cabin.first.char") +
+  xlab("Pclass") +
+  ylab("Total Count") +
+  ylim(0,500) +
+  labs(fill = "Survived")
+# As Scientists, we don't want to just be going with out gut, we want data to be driving what we are doing.
+
+# Does this feature improve upon Pclass + title?
+ggplot(data.combined[1:891,], aes(x = Cabin.first.char, fill = Survived)) +
+  geom_bar() +
+  facet_wrap(~Pclass + title) +
+  ggtitle("Pclass, Title") +
+  xlab("Cabin.first.char") +
+  ylab("Total Count") +
+  ylim(0,500) +
+  labs(fill = "Survived")
 
 
-## Paused here: Video 3, 40:10.
-
+## Paused here: Video 3, 45:24.
