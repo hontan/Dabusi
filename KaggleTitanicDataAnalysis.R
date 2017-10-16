@@ -397,5 +397,21 @@ Cabin.first.char <- as.factor(substr(data.combined$Cabin, 1, 1))
 str(Cabin.first.char)
 levels(Cabin.first.char)
 
-## Paused here: Video 3, 39:30.
+# Add to combined data set and plot
+data.combined.first.char <- Cabin.first.char
+# See what this looks like, a variable, not in the data.combined dataset.
+View(data.combined.first.char)
+
+# Hight level plot
+ggplot(data.combined[1:891,] aes(x = Cabin.first.char, fill = Survived)) +
+  geom_bar() +
+  ggtitle("Survivability by cabin.first.char") +
+  xlab("cabin.first.char") +
+  ylab("Total Count") +
+  ylim(0,750) +
+  labs(fill = "Survived")
+# THIS ISN'T WORKING
+
+
+## Paused here: Video 3, 40:10.
 
