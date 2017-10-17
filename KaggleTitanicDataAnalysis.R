@@ -457,5 +457,5 @@ ggplot(data.combined[1:891,], aes(x = Embarked, full = Survived)) +
   ylim(0,300) +
   labs(fill = "Survived")
 
-## Paused here: Start Video 4, "Cross Validation".
+## Paused here: Video 4, "Exploratory Modelling", 6:57.
 
