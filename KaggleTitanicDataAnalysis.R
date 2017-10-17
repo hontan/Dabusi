@@ -27,8 +27,8 @@ install.packages("xlsx")
 
 
 # Alternatively, using code, set working directory using:
-# setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
-setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # PT HP
+setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
+# setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # PT HP
 # setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
 
 
@@ -432,5 +432,30 @@ ggplot(data.combined[1:891,], aes(x = Cabin.first.char, fill = Survived)) +
   ylim(0,500) +
   labs(fill = "Survived")
 
+# What about folks with multiple cabins?
+data.combined$Cabin.multiple <- as.factor(ifelse(str_detect(data.combined$Cabin, " "), "Y", "N"))
 
-## Paused here: Video 3, 45:24.
+ggplot(data.combined[1:891,], aes(x = Cabin.multiple, fill = Survived)) +
+  geom_bar() +
+  facet_wrap(~Pclass + title) +
+  ggtitle("Cabin.Multiple") +
+  xlab("Cabin.multiple") +
+  ylab("Total Count") +
+  ylim(fill = "Survived")
+
+# Does survivability depend on where you got onboard the Titanic?
+str(data.combined$Embarked)
+levels(data.combined$Embarked)
+
+# Plat data for analysis
+ggplot(data.combined[1:891,], aes(x = Embarked, full = Survived)) +
+  geom_bar() +
+  facet_wrap(~Pclass + title) +
+  ggtitle("Pclass, Title") +
+  xlab("Embarked") +
+  ylab("Total Count") +
+  ylim(0,300) +
+  labs(fill = "Survived")
+
+## Paused here: Start Video 4, "Cross Validation".
+
