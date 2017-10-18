@@ -290,10 +290,10 @@ ggplot(data.combined[1:891,], aes(x = Parch, fill = Survived)) +
 ## Let's try some feature engineering. what about creating a family size feature?
 temp.sibsp <- c(train$SibSp, test$SibSp) #grabbing these again, becuase I want their integer variable.
 temp.parch <- c(train$Parch, test$Parch) #grabbing these again, becuase I want their integer variable.
-data.combined$fammily.size <- as.factor(temp.sibsp + temp.parch + 1)
+data.combined$family.size <- as.factor(temp.sibsp + temp.parch + 1)
 
 # Visualize it to see if it is predictive
-ggplot(data.combined[1:891,], aes(x = fammily.size, fill = Survived)) +
+ggplot(data.combined[1:891,], aes(x = family.size, fill = Survived)) +
   geom_bar(width = 1) +
   facet_wrap(~Pclass + title) +
   ggtitle("Pclass, Title") +
@@ -481,7 +481,41 @@ set.seed(1234)
 rf.1 <- randomForest(x = rf.train.1, y = rf.label, importance = TRUE, ntree = 1000)
 rf.1
 varImpPlot(rf.1)
+# Title is more to the right and therefore more predictie that Pclass.
 
+# Leo Breiman created Random Forest
 
-## Paused here: Video 4, "Exploratory Modelling", 21:25.
+# Train a Random Forest using Pclass, title, SibSp
+rf.train.2 <- data.combined[1:891, c("Pclass", "title", "SibSp")]
+
+set.seed(1234)
+rf.2 <- randomForest(x = rf.train.2, y = rf.label, importance = TRUE, ntree = 1000)
+rf.2
+varImpPlot(rf.2)
+
+# Train a Random Forest using Pclass, title, & Parch
+rf.train.3 <- data.combined[1:891, c("Pclass", "title", "Parch")]
+
+set.seed(1234)
+rf.3 <- randomForest(x = rf.train.3, y = rf.label, importance = TRUE, ntree = 1000)
+rf.3
+varImpPlot(rf.3)
+
+# Train a Random Forest using Pclass, title, & Parch
+rf.train.4 <- data.combined[1:891, c("Pclass", "title", "SibSp", "Parch")]
+
+set.seed(1234)
+rf.4 <- randomForest(x = rf.train.4, y = rf.label, importance = TRUE, ntree = 1000)
+rf.4
+varImpPlot(rf.4)
+
+# Train a Random Forest using Pclass, title, & family.size
+rf.train.5 <- data.combined[1:891, c("Pclass", "title", "family.size")]
+
+set.seed(1234)
+rf.5 <- randomForest(x = rf.train.5, y = rf.label, importance = TRUE, ntree = 1000)
+rf.5
+varImpPlot(rf.5)
+
+## Paused here: Video 4, "Exploratory Modelling", 39:30.
 
