@@ -536,6 +536,11 @@ varImpPlot(rf.7)
 # Feature engineering, understanding your data is the number one thing.
 # Over-fitting is the bane of applied "Predictive Modelling"/"Machine Learning" in Data Science.
 
+# Before we jump into features engineering we need to establish a methodology
+# for estimating our error rate on the test set (i.e. unseen data). This is
+# critical, because without this we are more likely to overfit. Let's start with a
+# submission of rf.5 to Kaggle to see if our OOB error estimate is accurate.
 
-## Paused here: Video 5, "Cross Validation", 00:00.
+
+## Paused here: Video 5, "Cross Validation", 07:30.
 
