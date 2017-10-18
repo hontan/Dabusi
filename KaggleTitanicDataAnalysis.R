@@ -457,5 +457,31 @@ ggplot(data.combined[1:891,], aes(x = Embarked, full = Survived)) +
   ylim(0,300) +
   labs(fill = "Survived")
 
-## Paused here: Video 4, "Exploratory Modelling", 6:57.
+## Video 4: Exploratory Modelling
+
+# Exploratory modelling.
+# Logistic Regression. Fast, but linear model, so maybe not effective.
+# Random Forests are effective.
+# Deep neural networks and booster tree (e.g. xgboost) ecplipse Random Forest.
+
+# Search Youtube: Random Forest Kaggle
+# For University of British Columia: Nando De Freitas, 4 hour lecture.
+
+# Install plain old randomForest package
+install.packages("randomForest")
+
+# Load randomForest
+library(randomForest)
+
+# Train a Random Forest with the default parameters using Pclass & Title
+rf.train.1 <- data.combined[1:891, c("Pclass", "title")]
+rf.label <- as.factor(train$Survived)
+
+set.seed(1234)
+rf.1 <- randomForest(x = rf.train.1, y = rf.label, importance = TRUE, ntree = 1000)
+rf.1
+varImpPlot(rf.1)
+
+
+## Paused here: Video 4, "Exploratory Modelling", 21:25.
 
