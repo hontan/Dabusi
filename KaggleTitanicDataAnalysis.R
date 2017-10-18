@@ -517,5 +517,24 @@ rf.5 <- randomForest(x = rf.train.5, y = rf.label, importance = TRUE, ntree = 10
 rf.5
 varImpPlot(rf.5)
 
-## Paused here: Video 4, "Exploratory Modelling", 39:30.
+# Train a Random Forest using Pclass, title, SibSp, & family.size
+rf.train.6 <- data.combined[1:891, c("Pclass", "title", "SibSp", "family.size")]
+
+set.seed(1234)
+rf.6 <- randomForest(x = rf.train.6, y = rf.label, importance = TRUE, ntree = 1000)
+rf.6
+varImpPlot(rf.6)
+
+# Train a Random Forest using Pclass, title, Parch, & family.size
+rf.train.7 <- data.combined[1:891, c("Pclass", "title", "Parch", "family.size")]
+
+set.seed(1234)
+rf.7 <- randomForest(x = rf.train.7, y = rf.label, importance = TRUE, ntree = 1000)
+rf.7
+varImpPlot(rf.7)
+
+# Feature engineering, understanding your data is the number one thing.
+
+
+## Paused here: Video 5, "Cross Validation", 00:00.
 
