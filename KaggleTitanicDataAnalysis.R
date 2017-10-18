@@ -534,6 +534,7 @@ rf.7
 varImpPlot(rf.7)
 
 # Feature engineering, understanding your data is the number one thing.
+# Over-fitting is the bane of applied "Predictive Modelling"/"Machine Learning" in Data Science.
 
 
 ## Paused here: Video 5, "Cross Validation", 00:00.
