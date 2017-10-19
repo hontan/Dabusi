@@ -553,5 +553,26 @@ submit.df <- data.frame(PassengerId = rep(892:1309), Survived = rf.5.preds)
 
 write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
 
-## Paused here: Video 5, "Cross Validation", 14:48.
+# Submit file to Kaggle at this point. Not shown in video.
+
+# Our submission scores 0.79426, but the OOB predicts that we should score 0.8159.
+# Let's look into cross-validation using the caret package to see if we can get
+# more accurate estimates
+
+# YouTube search: Cross Validation
+# YouTube search: Jeff Leek, Pick "Jeff Leek", Click: "Corsera Data Analysis". Start with "PredictionStudyDesign"(17:50, Study Design, Holdout Sets), then do "CrossValidation"(all)
+
+# caret stands for: Classification and Regression Training.
+# Recommended book: "Applied Predictive Modeling" by Max Kuhn & Kjell Johnson.
+# Website: caret.r-forge.r-project.org which goes to http://topepo.github.io/caret/index.html
+
+install.packages("caret")
+library(caret)
+install.packages("doSNOW")
+library(doSNOW)
+
+# Research has shown that 10-fold CV (Cross Validation) repeated 10 time is the best place to start,
+
+
+## Paused here: Video 5, "Cross Validation", 26:22.
 
