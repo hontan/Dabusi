@@ -541,6 +541,17 @@ varImpPlot(rf.7)
 # critical, because without this we are more likely to overfit. Let's start with a
 # submission of rf.5 to Kaggle to see if our OOB error estimate is accurate.
 
+# subset our test records and features
+test.submit.df <- data.combined[892:1309, c("Pclass", "title", "family.size")]
 
-## Paused here: Video 5, "Cross Validation", 07:30.
+# Make predictions
+rf.5.preds <- predict(rf.5, test.submit.df)
+table(rf.5.preds)
+
+# Write out a CSV file for submission to Kaggle
+submit.df <- data.frame(PassengerId = rep(892:1309), Survived = rf.5.preds)
+
+write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
+
+## Paused here: Video 5, "Cross Validation", 14:48.
 
