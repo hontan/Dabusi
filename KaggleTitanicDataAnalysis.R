@@ -600,5 +600,5 @@ table(rf.label[cv.10,folds[[33]]])
 # Set up caret's trainControl object per above.
 ctrl.1 <- trainControl(method = "repeatedcv", number = 10, repeats = 10, index = cv.10.folds)
 
-## Paused here: Video 5, "Cross Validation", 26:22.
+## Paused here: Video 5, "Cross Validation", 36:34.
 
