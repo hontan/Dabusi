@@ -580,7 +580,25 @@ install.packages("doSNOW")
 library(doSNOW)
 
 # Research has shown that 10-fold CV (Cross Validation) repeated 10 time is the best place to start,
+# however there are no hard and fast rules - this is where the experience of the
+# Data Scientist (i.e., the "art) comes into play. We'll start with 10-fold CV,
+# repeated 10 times and see how it goes.
 
+# Leverage caret to create 100 total folds, but ensure that the ratio of those
+# that survived and perished in each fold matches the overall training set. This
+# is known as stratified cros validation and generally provides better results.
+set.seed(2348)
+cv.10.folds <- createMultiFolds(rf.label, k = 10, times = 10)
+
+# Check stratification
+table(rd.label)
+342 / 549
+
+table(rf.label[cv.10,folds[[33]]])
+308 /494
+
+# Set up caret's trainControl object per above.
+ctrl.1 <- trainControl(method = "repeatedcv", number = 10, repeats = 10, index = cv.10.folds)
 
 ## Paused here: Video 5, "Cross Validation", 26:22.
 
