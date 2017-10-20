@@ -178,6 +178,14 @@ install.packages("tidyverse")
 # Feature engineering trumps algorithms.
 
 
+# Cambridge Analytica
+# +===================================================+
+# https://cambridgeanalytica.org/
+# Cambridge Analytica uses data to change audience behavior. Visit our Commercial or Political divisions to see how we can help you.
+# Questions have been raised about the role of Cambridge Analytica, a data mining and analysis company, in both the US election and the EU referendum.
+# +===================================================+
+
+
 # Introduction to Data Science with R - _Data Analysis Part 2.mp4
 
 # Deduced that:
