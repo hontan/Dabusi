@@ -646,7 +646,7 @@ cv.10.folds <- createMultiFolds(rf.label, k = 10, times = 10)
 # View(cv.10.folds)
 
 # Check stratification
-table(rd.label)
+table(rf.label)
 342 / 549
 
 table(rf.label[cv.10,folds[[33]]])
