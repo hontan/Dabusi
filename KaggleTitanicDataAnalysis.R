@@ -408,7 +408,7 @@ levels(Cabin.first.char)
 # Add to combined data set and plot
 data.combined$Cabin.first.char <- Cabin.first.char
 # See what this looks like, a variable, not in the data.combined dataset.
-View(data.combined$Cabin.first.char)
+# View(data.combined$Cabin.first.char)
 
 # Hight level plot
 ggplot(data.combined[1:891,], aes(x = Cabin.first.char, fill = Survived)) +
@@ -475,8 +475,21 @@ ggplot(data.combined[1:891,], aes(x = Embarked, full = Survived)) +
 # Search Youtube: Random Forest Kaggle
 # For University of British Columia: Nando De Freitas, 4 hour lecture.
 
+library(utils)
+# detach.packages("randomForest", unload = TRUE)
+# remove.packages("randomForest", lib = NULL)
+# remove.packages("randomForest")
+
+detach("package:randomForest", unload=TRUE)
+
+# removeDepends("randomForest")
+remove.packages("randomForest")
+# Removing package from ‘C:/Users/h/Documents/R/win-library/3.4’
+remove.packages("randomForest", lib = 'C:/Users/h/AppData/Local/Temp/RtmpiSPiHG/downloaded_packages')
+
 # Install plain old randomForest package
 install.packages("randomForest")
+# C:\Users\h\AppData\Local\Temp\RtmpiSPiHG\downloaded_packages
 
 # Load randomForest
 library(randomForest)
@@ -582,7 +595,12 @@ write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
 # sessionInfo()
 # This shows that I am using caret_6.0-77 which has a bug. So need to revert back to caret_6.0-76
 
-# remove.packages('caret')
+remove.packages('devtools')
+removeDepends('devtools')
+
+remove.packages('caret')
+removeDepends('caret')
+
 install.packages('devtools')
 library(devtools)
 require(devtools)
@@ -606,7 +624,7 @@ set.seed(2348)
 cv.10.folds <- createMultiFolds(rf.label, k = 10, times = 10)
 
 # What's in here now?
-View(cv.10.folds)
+# View(cv.10.folds)
 
 # Check stratification
 table(rd.label)
