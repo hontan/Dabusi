@@ -1,3 +1,12 @@
+# detach("package:randomForest", unload=TRUE)
+# detach("package:devtools", unload=TRUE)
+# detach("package:caret", unload=TRUE)
+# detach("package:doSNOW", unload=TRUE)
+# remove.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+# remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
+# remove.packages('caret')
+# remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+
 # library(forecast)
 # plot(wineind)
 # sm <- ma(wineind,order=12)
@@ -486,6 +495,8 @@ ggplot(data.combined[1:891,], aes(x = Embarked, full = Survived)) +
 # remove.packages('randomForest', lib = 'C:/Users/h/AppData/Local/Temp/Rtmpkf6aHB/downloaded_packages')
 # Removing package from ‘C:/Users/h/Documents/R/win-library/3.4’
 # remove.packages("randomForest", lib = 'C:/Users/h/AppData/Local/Temp/RtmpiSPiHG/downloaded_packages')
+
+
 remove.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
 # Install plain old randomForest package
@@ -495,7 +506,7 @@ install.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packag
 # C:\Users\h\AppData\Local\Temp\RtmpiSPiHG\downloaded_packages
 
 # Load randomForest
-library(randomForest)
+library(randomForest, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
 # Train a Random Forest with the default parameters using Pclass & Title
 rf.train.1 <- data.combined[1:891, c("Pclass", "title")]
@@ -604,17 +615,19 @@ remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
 # remove.packages('caret')
 # removeDepends('caret')
-remove.packages('caret', lib = 'C:/Users/h/Documents/R/downloaded_packages')
+# remove.packages("caret", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+# caret is not HERE
 
 install.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
-library(devtools)
-require(devtools)
+library(devtools, lib = 'C:/Users/h/Documents/R/downloaded_packages')
+require(devtools, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 install_version("caret", version = "6.0-76", repos = "http://cran.us.r-project.org")
+# install_version("caret", version = "6.0-76", repos = "http://cran.us.r-project.org", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 library(caret)
 
 remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 install.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-library(doSNOW)
+library(doSNOW, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
 # help(package = caret)
 
