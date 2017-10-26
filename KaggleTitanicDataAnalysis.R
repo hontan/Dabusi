@@ -576,10 +576,10 @@ write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
 
 
 # install.packages("caret")
-install.packages('caret', dependencies = TRUE)
-library(caret)
+# install.packages('caret', dependencies = TRUE)
+# library(caret)
 
-sessionInfo()
+# sessionInfo()
 # This shows that I am using caret_6.0-77 which has a bug. So need to revert back to caret_6.0-76
 
 # remove.packages('caret')
@@ -592,7 +592,7 @@ library(caret)
 install.packages("doSNOW")
 library(doSNOW)
 
-help(package = caret)
+# help(package = caret)
 
 # Research has shown that 10-fold CV (Cross Validation) repeated 10 time is the best place to start,
 # however there are no hard and fast rules - this is where the experience of the
@@ -638,7 +638,7 @@ rf.5.cv.1 <-train(x = rf.train.5, y = rf.label, method = "rf", tunelength = 3, n
 
 
 # After run, Shutdown cluster, if still running...?
-stopCluster(cl)
+# stopCluster(cl)
 
 View(rf.5.cv.1)
 
@@ -688,5 +688,4 @@ rf.5.cv.3
 
 
 ## Paused here: Video 5, "Cross Validation", Done to End.
-
 
