@@ -637,10 +637,10 @@ set.seed(34324)
 rf.5.cv.1 <-train(x = rf.train.5, y = rf.label, method = "rf", tunelength = 3, ntree = 1000, trControl = ctrl.1)
 
 
-# After run, Shutdown cluster, if still running...?
-# stopCluster(cl)
+# After run, Shutdown cluster
+stopCluster(cl)
 
-View(rf.5.cv.1)
+# View(rf.5.cv.1)
 
 # Check out results
 rf.5.cv.1
