@@ -1,11 +1,11 @@
-library(forecast)
-plot(wineind)
-sm <- ma(wineind,order=12)
-lines(sm,col="red")
+# library(forecast)
+# plot(wineind)
+# sm <- ma(wineind,order=12)
+# lines(sm,col="red")
 
-View(flights14)
-install.packages("data.table")
-install.packages("xlsx")
+# View(flights14)
+# install.packages("data.table")
+# install.packages("xlsx")
 
 # Introduction to Data Science with R - _Data Analysis Part 1.mp4
 
@@ -27,9 +27,9 @@ install.packages("xlsx")
 
 
 # Alternatively, using code, set working directory using:
-setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
+# setwd("C:/Users/Hon/Documents/R/Kaggle Titanic Data") # Acer Travelmate
 # setwd("C:/Users/Hontan/Documents/R/Kaggle Titanic Data") # PT HP
-# setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
+setwd("E:/Hon 2017-01-01 FULL/Hon R/Kaggle Titanic Data") # Gigabyte
 
 
 # Load row data
@@ -574,9 +574,21 @@ write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
 # Recommended book: "Applied Predictive Modeling" by Max Kuhn & Kjell Johnson. Authors of caret.
 # Website: caret.r-forge.r-project.org which goes to http://topepo.github.io/caret/index.html
 
+
 # install.packages("caret")
 install.packages('caret', dependencies = TRUE)
 library(caret)
+
+sessionInfo()
+# This shows that I am using caret_6.0-77 which has a bug. So need to revert back to caret_6.0-76
+
+# remove.packages('caret')
+install.packages('devtools')
+library(devtools)
+require(devtools)
+install_version("caret", version = "6.0-76", repos = "http://cran.us.r-project.org")
+library(caret)
+
 install.packages("doSNOW")
 library(doSNOW)
 
@@ -603,7 +615,8 @@ table(rd.label)
 table(rf.label[cv.10,folds[[33]]])
 308 /494
 
-?trainControl
+# ?trainControl
+
 
 # Set up caret's trainControl object per above.
 ctrl.1 <- trainControl(method = "repeatedcv", number = 10, repeats = 10, index = cv.10.folds)
@@ -611,28 +624,18 @@ ctrl.1 <- trainControl(method = "repeatedcv", number = 10, repeats = 10, index =
 # Set up doSNOW package for multi-core traning. This is helpful as we're going
 # to be traning a lot of trees.
 # NOTe - This works on Windows and Mac, unlike doMC, which only works on Linux and Mac, not Windows.
-?makeCluster
+# ?makeCluster
 cl <- makeCluster(6, type = "SOCK")
 registerDoSNOW(cl)
 
-?train
+# ?train
 # Can do: pre-processing, impute values, do priciple components analysis fo dimension reduction, spacialSign for neural networks.
-
-# First, install this package otherwise get an error to install it:
-install.packages('e1071', dependencies=TRUE)
-# Or install caret with all its dependancies.. (This reuuires restarting R lots of times.
-# install.packages('caret', dependencies = TRUE)
-
-#
-library(caret)
-library(doSNOW)
 
 # Set seed for reproducibility and train
 # Comment out this section, it takes a long time to run, but is needed for each run of tutorial, so run manually.
-#
-#set.seed(34324)
-#rf.5.cv.1 <-train(x = rf.train.5, y = rf.label, method = "rf", tunelength = 3, ntree = 1000, trControl = ctrl.1)
-#
+set.seed(34324)
+rf.5.cv.1 <-train(x = rf.train.5, y = rf.label, method = "rf", tunelength = 3, ntree = 1000, trControl = ctrl.1)
+
 
 # After run, Shutdown cluster, if still running...?
 stopCluster(cl)
@@ -655,7 +658,35 @@ registerDoSNOW(cl)
 set.seed(89472)
 rf.5.cv.2 <-train(x = rf.train.5, y = rf.label, method = "rf", tuneLength = 3, ntree = 1000, trControl = ctrl.2)
 
+# Shutdown cluster
+stopCluster(cl)
 
-## Paused here: Video 5, "Cross Validation", 54:34.
+# Check out results
+rf.5.cv.2
+
+
+# 5-fold CV isn't better. Move to 3-fold CV repeated 10 times
+set.seed(37596)
+cv.3.folds <- createMultiFolds(rf.label, k =3, times = 10)
+
+ctrl.3 <- trainControl(method = "repeatedcv", number = 3, repeats = 10, index = cv.3.folds)
+
+cl <- makeCluster(6, type = "SOCK")
+registerDoSNOW(cl)
+
+set.seed(94622)
+rf.5.cv.3 <- train(x = rf.train.5, y = rf.label, method = "rf", tunelength = 3, ntree = 64, trControl = ctrl.3)
+
+# Shutdown cluster
+stopCluster(cl)
+
+# Check out results
+rf.5.cv.3
+
+# We are using Random Forest.
+# Support Vector Machine (SVM), a classification algorithm.
+
+
+## Paused here: Video 5, "Cross Validation", Done to End.
 
 
