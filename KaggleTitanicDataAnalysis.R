@@ -571,13 +571,16 @@ write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
 # YouTube search: Jeff Leek, Pick "Jeff Leek", Click: "Corsera Data Analysis". Start with "PredictionStudyDesign"(17:50, Study Design, Holdout Sets), then do "CrossValidation"(all)
 
 # caret stands for: Classification and Regression Training.
-# Recommended book: "Applied Predictive Modeling" by Max Kuhn & Kjell Johnson.
+# Recommended book: "Applied Predictive Modeling" by Max Kuhn & Kjell Johnson. Authors of caret.
 # Website: caret.r-forge.r-project.org which goes to http://topepo.github.io/caret/index.html
 
-install.packages("caret")
+# install.packages("caret")
+install.packages('caret', dependencies = TRUE)
 library(caret)
 install.packages("doSNOW")
 library(doSNOW)
+
+help(package = caret)
 
 # Research has shown that 10-fold CV (Cross Validation) repeated 10 time is the best place to start,
 # however there are no hard and fast rules - this is where the experience of the
@@ -590,6 +593,9 @@ library(doSNOW)
 set.seed(2348)
 cv.10.folds <- createMultiFolds(rf.label, k = 10, times = 10)
 
+# What's in here now?
+View(cv.10.folds)
+
 # Check stratification
 table(rd.label)
 342 / 549
@@ -597,8 +603,59 @@ table(rd.label)
 table(rf.label[cv.10,folds[[33]]])
 308 /494
 
+?trainControl
+
 # Set up caret's trainControl object per above.
 ctrl.1 <- trainControl(method = "repeatedcv", number = 10, repeats = 10, index = cv.10.folds)
 
-## Paused here: Video 5, "Cross Validation", 36:34.
+# Set up doSNOW package for multi-core traning. This is helpful as we're going
+# to be traning a lot of trees.
+# NOTe - This works on Windows and Mac, unlike doMC, which only works on Linux and Mac, not Windows.
+?makeCluster
+cl <- makeCluster(6, type = "SOCK")
+registerDoSNOW(cl)
+
+?train
+# Can do: pre-processing, impute values, do priciple components analysis fo dimension reduction, spacialSign for neural networks.
+
+# First, install this package otherwise get an error to install it:
+install.packages('e1071', dependencies=TRUE)
+# Or install caret with all its dependancies.. (This reuuires restarting R lots of times.
+# install.packages('caret', dependencies = TRUE)
+
+#
+library(caret)
+library(doSNOW)
+
+# Set seed for reproducibility and train
+# Comment out this section, it takes a long time to run, but is needed for each run of tutorial, so run manually.
+#
+#set.seed(34324)
+#rf.5.cv.1 <-train(x = rf.train.5, y = rf.label, method = "rf", tunelength = 3, ntree = 1000, trControl = ctrl.1)
+#
+
+# After run, Shutdown cluster, if still running...?
+stopCluster(cl)
+
+View(rf.5.cv.1)
+
+# Check out results
+rf.5.cv.1
+
+# The above is only slightly more pessimistic than the rf.5 OOB prediction, but
+# not pressimistic enough. Let's try 5-fold CV repeated 10 times.
+set.seed(5983)
+cv.5.folds <- createMultiFolds(rf.label, k = 5, times = 10)
+
+ctrl.2 <- trainControl(method = "repeatedcv", number = 5, repeats = 10, index = cv.5.folds)
+
+cl <- makeCluster(6, type = "SOCK")
+registerDoSNOW(cl)
+
+set.seed(89472)
+rf.5.cv.2 <-train(x = rf.train.5, y = rf.label, method = "rf", tuneLength = 3, ntree = 1000, trControl = ctrl.2)
+
+
+## Paused here: Video 5, "Cross Validation", 54:34.
+
 
