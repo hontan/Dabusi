@@ -475,20 +475,23 @@ ggplot(data.combined[1:891,], aes(x = Embarked, full = Survived)) +
 # Search Youtube: Random Forest Kaggle
 # For University of British Columia: Nando De Freitas, 4 hour lecture.
 
-library(utils)
+# library(utils)
 # detach.packages("randomForest", unload = TRUE)
 # remove.packages("randomForest", lib = NULL)
 # remove.packages("randomForest")
 
-detach("package:randomForest", unload=TRUE)
+# detach("package:randomForest", unload=TRUE)
 
 # removeDepends("randomForest")
-remove.packages("randomForest")
+# remove.packages('randomForest', lib = 'C:/Users/h/AppData/Local/Temp/Rtmpkf6aHB/downloaded_packages')
 # Removing package from ‘C:/Users/h/Documents/R/win-library/3.4’
-remove.packages("randomForest", lib = 'C:/Users/h/AppData/Local/Temp/RtmpiSPiHG/downloaded_packages')
+# remove.packages("randomForest", lib = 'C:/Users/h/AppData/Local/Temp/RtmpiSPiHG/downloaded_packages')
+remove.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
 # Install plain old randomForest package
-install.packages("randomForest")
+# install.packages("randomForest")
+install.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+
 # C:\Users\h\AppData\Local\Temp\RtmpiSPiHG\downloaded_packages
 
 # Load randomForest
@@ -595,19 +598,22 @@ write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
 # sessionInfo()
 # This shows that I am using caret_6.0-77 which has a bug. So need to revert back to caret_6.0-76
 
-remove.packages('devtools')
-removeDepends('devtools')
+# remove.packages('devtools')
+# removeDepends('devtools')
+remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
-remove.packages('caret')
-removeDepends('caret')
+# remove.packages('caret')
+# removeDepends('caret')
+remove.packages('caret', lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
-install.packages('devtools')
+install.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
 library(devtools)
 require(devtools)
 install_version("caret", version = "6.0-76", repos = "http://cran.us.r-project.org")
 library(caret)
 
-install.packages("doSNOW")
+remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+install.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 library(doSNOW)
 
 # help(package = caret)
