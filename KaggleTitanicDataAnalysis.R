@@ -1,16 +1,3 @@
-installed.packages("caret")
-
-detach("package:randomForest", unload=TRUE)
-detach("package:devtools", unload=TRUE)
-detach("package:caret", unload=TRUE)
-detach("package:doSNOW", unload=TRUE)
-#detach("package:ggplot2", unload=TRUE)
-remove.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
-remove.packages('caret')
-remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-#remove.packages('ggplot2')
-
 # library(forecast)
 # plot(wineind)
 # sm <- ma(wineind,order=12)
