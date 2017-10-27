@@ -1,11 +1,15 @@
-# detach("package:randomForest", unload=TRUE)
-# detach("package:devtools", unload=TRUE)
-# detach("package:caret", unload=TRUE)
-# detach("package:doSNOW", unload=TRUE)
-# remove.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-# remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
-# remove.packages('caret')
-# remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+installed.packages("caret")
+
+detach("package:randomForest", unload=TRUE)
+detach("package:devtools", unload=TRUE)
+detach("package:caret", unload=TRUE)
+detach("package:doSNOW", unload=TRUE)
+#detach("package:ggplot2", unload=TRUE)
+remove.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
+remove.packages('caret')
+remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+#remove.packages('ggplot2')
 
 # library(forecast)
 # plot(wineind)
@@ -338,7 +342,7 @@ unique(Ticket.first.char)
 data.combined$Ticket.first.char <- as.factor(Ticket.first.char)
 
 # View it
-View(data.combined)
+# View(data.combined)
 
 ggplot(data.combined[1:891,], aes(x = Ticket.first.char, fill = Survived)) +
   geom_bar() +
@@ -493,20 +497,25 @@ ggplot(data.combined[1:891,], aes(x = Embarked, full = Survived)) +
 
 # removeDepends("randomForest")
 # remove.packages('randomForest', lib = 'C:/Users/h/AppData/Local/Temp/Rtmpkf6aHB/downloaded_packages')
-# Removing package from ‘C:/Users/h/Documents/R/win-library/3.4’
+# Removing package from 'C:/Users/h/Documents/R/win-library/3.4'
 # remove.packages("randomForest", lib = 'C:/Users/h/AppData/Local/Temp/RtmpiSPiHG/downloaded_packages')
 
 
+
+#########################################################################################
+#########################################################################################
+
+
 remove.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-
-# Install plain old randomForest package
-# install.packages("randomForest")
 install.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-
-# C:\Users\h\AppData\Local\Temp\RtmpiSPiHG\downloaded_packages
-
-# Load randomForest
 library(randomForest, lib = 'C:/Users/h/Documents/R/downloaded_packages')
+
+
+#########################################################################################
+#########################################################################################
+
+
+
 
 # Train a Random Forest with the default parameters using Pclass & Title
 rf.train.1 <- data.combined[1:891, c("Pclass", "title")]
@@ -609,25 +618,29 @@ write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
 # sessionInfo()
 # This shows that I am using caret_6.0-77 which has a bug. So need to revert back to caret_6.0-76
 
-# remove.packages('devtools')
-# removeDepends('devtools')
+
+
+
+########################################################################################
+########################################################################################
+
+
 remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
-
-# remove.packages('caret')
-# removeDepends('caret')
-# remove.packages("caret", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-# caret is not HERE
-
 install.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
 library(devtools, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 require(devtools, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 install_version("caret", version = "6.0-76", repos = "http://cran.us.r-project.org")
-# install_version("caret", version = "6.0-76", repos = "http://cran.us.r-project.org", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 library(caret)
-
 remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 install.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 library(doSNOW, lib = 'C:/Users/h/Documents/R/downloaded_packages')
+
+
+#########################################################################################
+#########################################################################################
+
+
+
 
 # help(package = caret)
 
@@ -649,7 +662,7 @@ cv.10.folds <- createMultiFolds(rf.label, k = 10, times = 10)
 table(rf.label)
 342 / 549
 
-table(rf.label[cv.10,folds[[33]]])
+table(rf.label[cv.10.folds[[33]]])
 308 /494
 
 # ?trainControl
