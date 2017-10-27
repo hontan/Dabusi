@@ -723,7 +723,8 @@ rf.5.cv.3
 # We are using Random Forest.
 # Support Vector Machine (SVM), a classification algorithm.
 
+# Start of Video 6. Exploratory Modelling 2.
+
 
 ## Paused here: Video 5, "Cross Validation", Done to End.
-
 
