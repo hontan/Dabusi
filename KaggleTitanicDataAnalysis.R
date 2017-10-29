@@ -492,10 +492,10 @@ ggplot(data.combined[1:891,], aes(x = Embarked, full = Survived)) +
 #########################################################################################
 #########################################################################################
 
-
-remove.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-install.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
-library(randomForest, lib = 'C:/Users/h/Documents/R/downloaded_packages')
+install.packages("randomForest")
+library(randomForest)
+# install.packages("randomForest", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+# library(randomForest, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
 
 #########################################################################################
@@ -612,13 +612,13 @@ write.csv(submit.df, file = "RF_SUB_20171019_1.csv", row.names = FALSE)
 ########################################################################################
 
 
-remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
+# remove.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
 install.packages('devtools', lib = 'C:/Users/h/Documents/R/downloaded_packages')
 library(devtools, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 require(devtools, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 install_version("caret", version = "6.0-76", repos = "http://cran.us.r-project.org")
 library(caret)
-remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
+# remove.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 install.packages("doSNOW", lib = 'C:/Users/h/Documents/R/downloaded_packages')
 library(doSNOW, lib = 'C:/Users/h/Documents/R/downloaded_packages')
 
@@ -723,8 +723,13 @@ rf.5.cv.3
 # We are using Random Forest.
 # Support Vector Machine (SVM), a classification algorithm.
 
+
+############################################
 # Start of Video 6. Exploratory Modelling 2.
+############################################
 
 
-## Paused here: Video 5, "Cross Validation", Done to End.
+
+
+## Paused here: Video 6, "Exploratory Modelling 2.", 06:00.
 
