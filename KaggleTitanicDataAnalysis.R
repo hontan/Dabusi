@@ -728,8 +728,24 @@ rf.5.cv.3
 # Start of Video 6. Exploratory Modelling 2.
 ############################################
 
+# Let's use a single decision tree to better undertand what's going on with our
+# features. Obviously Random Forests are far more powerful than single trees,
+# but single trees have the advantage of being easier to understand.
 
+# CART Algorithm.
 
+# Install and load packages
+install.packages("rpart")
+install.packages("rpart.plot")
+library(rpart)
+library(rpart.plot)
 
-## Paused here: Video 6, "Exploratory Modelling 2.", 06:00.
+# As per video 5, let's use 3-fold Cross Validation repeated 10 times.
+
+# Create utility function
+rpart.cv <- function(seed, training, labels, ctrl) {
+  cl <- makeCluster(6, type = "SOCK")
+  registerDoSNOW(cl)
+
+## Paused here: Video 6, "Exploratory Modelling 2.", 06:50.
 
